@@ -1,123 +1,119 @@
-use std::fs::{self, OpenOptions};
+use std::fs;
 use std::io::{self, Write};
-use std::process;
+use serde::{Serialize, Deserialize};
+use serde_json;
 
-#[derive(Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 struct Contribution {
     username: String,
     repo: String,
     commits: u32,
 }
 
+struct TrackerApp {
+    contributions: Vec<Contribution>,
+}
+
+impl TrackerApp {
+    fn new() -> Self {
+        TrackerApp {
+            contributions: Vec::new(),
+        }
+    }
+
+    fn load_from_file(&mut self) {
+        if let Ok(contents) = fs::read_to_string("contributions.json") {
+            let contributions: Vec<Contribution> = serde_json::from_str(&contents).unwrap_or_default();
+            self.contributions = contributions;
+        }
+    }
+
+    fn save_to_file(&self) {
+        let contents = serde_json::to_string(&self.contributions).expect("Error serializing data");
+        fs::write("contributions.json", contents).expect("Error writing to file");
+    }
+
+    fn add_contribution(&mut self, username: String, repo: String, commits: u32) {
+        let contribution = Contribution {
+            username,
+            repo,
+            commits,
+        };
+        self.contributions.push(contribution);
+    }
+
+    fn list_contributions(&self) {
+        if self.contributions.is_empty() {
+            println!("No contributions recorded yet.");
+        } else {
+            for (i, contribution) in self.contributions.iter().enumerate() {
+                println!(
+                    "{}. {} - {} ({} commits)",
+                    i + 1,
+                    contribution.username,
+                    contribution.repo,
+                    contribution.commits
+                );
+            }
+        }
+    }
+
+    fn get_u32_input(&self, prompt: &str) -> u32 {
+        loop {
+            println!("{}", prompt);
+            let mut input = String::new();
+            io::stdin().read_line(&mut input).expect("Failed to read line");
+            match input.trim().parse::<u32>() {
+                Ok(value) => return value,
+                Err(_) => println!("Invalid input. Please enter a valid number."),
+            }
+        }
+    }
+
+    fn get_string_input(&self, prompt: &str) -> String {
+        println!("{}", prompt);
+        let mut input = String::new();
+        io::stdin().read_line(&mut input).expect("Failed to read line");
+        input.trim().to_string()
+    }
+}
+
 fn main() {
-    let mut contributions = load_contributions();
+    let mut tracker = TrackerApp::new();
+    tracker.load_from_file();
 
     loop {
-        println!("\n📌 Open Source Contribution Tracker");
-        println!("1️⃣ Add Contribution");
-        println!("2️⃣ List Contributions");
-        println!("3️⃣ Delete All Contributions");
-        println!("4️⃣ Exit");
-        print!("👉 Enter your choice: ");
-        io::stdout().flush().unwrap();
+        println!("\nOpen Source Contribution Tracker");
+        println!("1. Add Contribution");
+        println!("2. List Contributions");
+        println!("3. Exit");
 
-        let mut choice = String::new();
-        io::stdin().read_line(&mut choice).expect("Failed to read input");
-        let choice = choice.trim();
+        let choice = tracker.get_u32_input("Please select an option (1-3):");
 
         match choice {
-            "1" => {
-                let contrib = add_contribution();
-                contributions.push(contrib.clone());
-                save_contribution(&contrib);
-                println!("✅ Contribution saved!");
+            1 => {
+                // Add Contribution
+                let username = tracker.get_string_input("Enter GitHub Username:");
+                let repo = tracker.get_string_input("Enter Repository Name:");
+                let commits = tracker.get_u32_input("Enter Number of Commits:");
+
+                tracker.add_contribution(username, repo, commits);
+                tracker.save_to_file();
+                println!("Contribution added!");
             }
-            "2" => list_contributions(&contributions),
-            "3" => delete_all_contributions(),
-            "4" => {
-                println!("👋 Exiting... Have a great day!");
-                process::exit(0);
+            2 => {
+                // List Contributions
+                tracker.list_contributions();
             }
-            _ => println!("❌ Invalid choice. Please enter 1, 2, 3, or 4."),
-        }
-    }
-}
-
-fn add_contribution() -> Contribution {
-    let username = get_input("📝 Enter GitHub username: ");
-    let repo = get_input("📂 Enter repository name: ");
-    let commits: u32 = loop {
-        let input = get_input("🔢 Enter number of commits: ");
-        match input.parse() {
-            Ok(num) => break num,
-            Err(_) => println!("❌ Invalid number! Please enter a valid integer."),
-        }
-    };
-
-    Contribution { username, repo, commits }
-}
-
-fn list_contributions(contributions: &Vec<Contribution>) {
-    if contributions.is_empty() {
-        println!("📭 No contributions recorded yet.");
-    } else {
-        println!("\n📋 Recorded Contributions:");
-        println!("----------------------------------");
-        println!("{:<3} {:<15} {:<20} {:<8}", "#", "Username", "Repository", "Commits");
-        println!("----------------------------------");
-
-        for (i, c) in contributions.iter().enumerate() {
-            println!(
-                "{:<3} {:<15} {:<20} {:<8}",
-                i + 1,
-                c.username,
-                c.repo,
-                c.commits
-            );
-        }
-    }
-}
-
-fn get_input(prompt: &str) -> String {
-    let mut input = String::new();
-    println!("{}", prompt);
-    io::stdin().read_line(&mut input).expect("Failed to read input");
-    input.trim().to_string()
-}
-
-fn save_contribution(contrib: &Contribution) {
-    let mut file = OpenOptions::new()
-        .append(true)
-        .create(true)
-        .open("contributions.txt")
-        .expect("❌ Failed to open file");
-
-    writeln!(file, "{},{},{}", contrib.username, contrib.repo, contrib.commits)
-        .expect("❌ Failed to write to file");
-}
-
-fn load_contributions() -> Vec<Contribution> {
-    let mut contributions = Vec::new();
-    if let Ok(contents) = fs::read_to_string("contributions.txt") {
-        for line in contents.lines() {
-            let parts: Vec<&str> = line.split(',').collect();
-            if parts.len() == 3 {
-                if let Ok(commits) = parts[2].parse() {
-                    contributions.push(Contribution {
-                        username: parts[0].to_string(),
-                        repo: parts[1].to_string(),
-                        commits,
-                    });
-                }
+            3 => {
+                // Exit
+                println!("Exiting... Bye!");
+                tracker.save_to_file();
+                break;
+            }
+            _ => {
+                println!("Please enter a valid option.");
             }
         }
-    }
-    contributions
-}
-
-fn delete_all_contributions() {
-    match fs::remove_file("contributions.txt") {
-        Ok(_) => println!("🗑️ All contributions deleted successfully."),
-        Err(_) => println!("⚠️ No contributions found to delete."),
     }
 }
