@@ -23,3 +23,21 @@ To run the application, ensure you have Rust installed on your machine. If you d
 1. Clone the repository:
    ```bash
    git clone https://github.com/hlulanij/open-source-tracker.git
+# Open Source Contribution Tracker
+A command-line tool built with Rust to track open-source contributions for students.
+
+## Features:
+- **Add Contribution**: Add a new contribution, specifying the user's name, project, and number of commits.
+- **List Contributions**: View all recorded contributions.
+- **Exit**: Exit the program.
+
+## Technologies Used:
+- **Rust**: The programming language used to build this CLI tool.
+- **Serde**: For serialization and deserialization (used in saving/loading contributions).
+
+## Installation
+
+1. Clone the repository to your local machine:
+   ```bash
+   git clone https://github.com/hlulanij/open-source-tracker.git
+   cd open-source-tracker
