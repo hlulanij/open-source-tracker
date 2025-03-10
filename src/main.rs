@@ -1,4 +1,7 @@
 use std::io::{self, Write};
+mod tracker;
+mod contribution;
+
 use tracker::Tracker;
 
 fn main() {

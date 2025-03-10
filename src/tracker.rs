@@ -18,7 +18,8 @@ impl Tracker {
 
     // Add a contribution
     pub fn add_contribution(&mut self, user: &str, project: &str, contribution_type: &str) {
-        let contribution = Contribution::new(user, project, contribution_type);
+        let contribution = Contribution::new(user.to_string(), project.to_string(), contribution_type.parse::<u32>().unwrap_or(0));
+
         self.contributions.push(contribution);
         self.save_contributions().unwrap();
     }
@@ -30,11 +31,13 @@ impl Tracker {
         } else {
             for contribution in &self.contributions {
                 println!(
-                    "User: {} | Project: {} | Contribution: {}",
-                    contribution.user, contribution.project, contribution.contribution_type
+                    "User: {}, Project: {}, Contributions: {}",
+                    contribution.username, contribution.repo_name, contribution.commits
                 );
+
             }
-        }
+
+                }
     }
 
     // Save contributions to a JSON file
