@@ -10,7 +10,6 @@ This document outlines the use case diagram, detailed use case specifications, a
 
 #### 1.1 Use Case Diagram (Mermaid.js)
 
-
 ```mermaid
 graph TD;
     %% Actors
@@ -31,6 +30,20 @@ graph TD;
     TrackContributions -->|Requires login| Login
     GenerateReport -->|Requires data| Database
     ReviewContributions -->|Accesses database| Database
+
+### 2. **Export Diagram as Image and Link in Markdown**
+If the Mermaid.js rendering still fails, another option is to **export the Mermaid diagram as an image** and use it in your markdown file.
+
+**Steps:**
+1. **Create Diagram**: Use the **Mermaid Live Editor** (https://mermaid-js.github.io/mermaid-live-editor/) to generate your diagram.
+2. **Export as Image**: After generating your diagram, export it as **PNG** or **SVG**.
+3. **Upload Image to GitHub**:
+   - Upload the image to your GitHub repository (use the file uploader or the `git add` command).
+4. **Link Image in Markdown**:
+   - In your **usecase.md** file, replace the Mermaid code block with an image tag like this:
+
+```markdown
+![Use Case Diagram](path/to/your/image.png)
 
 
 1.2 Explanation
