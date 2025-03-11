@@ -10,44 +10,6 @@ This document outlines the use case diagram, detailed use case specifications, a
 
 #### 1.1 Use Case Diagram (Mermaid.js)
 
-```mermaid
-graph TD;
-    %% Actors
-    Student[Student] -->|Logs in| Login(Login to System)
-    Student -->|Tracks contributions| TrackContributions(Track Contributions)
-    Student -->|Generates report| GenerateReport(Generate Contribution Report)
-    Student -->|Edits profile| EditProfile(Edit Profile)
-    
-    Admin[Admin] -->|Manages users| ManageUsers(Manage Users)
-    Admin -->|Reviews contributions| ReviewContributions(Review Contributions)
-    
-    System[System] -->|Stores data| Database[(Database)]
-    
-    GitHubAPI[GitHub API] -->|Fetches contribution data| TrackContributions
-    GitHubAPI -->|Fetches history| GenerateReport
-    
-    %% Relationships
-    TrackContributions -->|Requires login| Login
-    GenerateReport -->|Requires data| Database
-    ReviewContributions -->|Accesses database| Database
-
-### 2. **Preview Locally or Use Another Tool**
-GitHub's native rendering might sometimes have issues with complex Mermaid diagrams, or the diagram might not render at all in some cases. You can use other methods to visualize Mermaid diagrams:
-
-#### Option 1: **Use a Markdown Previewer with Mermaid.js**
-- Install a local Markdown editor like **Typora** or **Mark Text**, which can render Mermaid.js diagrams properly.
-- Alternatively, use an online **Mermaid Live Editor** (https://mermaid-js.github.io/mermaid-live-editor/), paste the Mermaid diagram there, and confirm that it’s rendering as expected.
-- If everything looks good in the editor, you can export it as an image and add it to your GitHub repo.
-
-#### Option 2: **Export the Diagram as an Image**
-1. Use the **Mermaid Live Editor** or another local tool to generate your Mermaid diagram.
-2. Export the diagram as an image (PNG or SVG).
-3. Upload the image to your GitHub repository (use `git add` and commit the image).
-4. In your **Use_case.md**, link the image instead of using the Mermaid.js code:
-
-```markdown
-![Use Case Diagram](path/to/your/image.png)
-
 
 
 1.2 Explanation
