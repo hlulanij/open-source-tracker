@@ -10,6 +10,7 @@ This document outlines the use case diagram, detailed use case specifications, a
 
 #### 1.1 Use Case Diagram (Mermaid.js)
 
+![Use Case Diagram](https://github.com/hlulanij/open-source-tracker/blob/main/mermaid-diagram-2025-03-11-204737.png?raw=true)
 
 
 1.2 Explanation
