@@ -61,30 +61,9 @@ Feel free to fork the repository and submit a pull request for any improvements 
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-Use Case Diagram
-Here’s a high-level overview of the interactions between the users and the system. This diagram models the system's main actors and their actions:
 
-1. Use Case Diagram (Mermaid.js)
-mermaid
-Copy
-Edit
-Build the project:
-
-bash
-Copy
-Edit
-cargo build --release
-Run the application:
-
-bash
-Copy
-Edit
-cargo run
-Available Commands:
-Add Contribution: Adds a new contribution. You will be prompted to input the GitHub username, repository name, and the number of commits.
-List Contributions: Displays a list of all recorded contributions.
-Exit: Exits the program.
 Technologies Used:
+
 Rust: The programming language used to build this CLI tool.
 Serde: For serialization and deserialization (used in saving/loading contributions).
 Contribution
@@ -93,13 +72,7 @@ Feel free to fork the repository and submit a pull request for any improvements 
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-Use Case Diagram
-Here’s a high-level overview of the interactions between the users and the system. This diagram models the system's main actors and their actions:
 
-1. Use Case Diagram (Mermaid.js)
-mermaid
-Copy
-Edit
 Test Cases
 1. Functional Test Cases
 Test Case ID	Requirement ID	Description	Steps	Expected Result	Actual Result	Status
@@ -111,10 +84,12 @@ TC-005	FR-005	System handles empty contribution history	1. Track Contributions w
 TC-006	FR-006	Admin removes a user	1. Select user 2. Click "Remove"	User deleted from system		
 TC-007	FR-007	Student updates profile	1. Edit name and bio 2. Click "Save"	Profile updated successfully		
 TC-008	FR-008	GitHub API unavailability	1. Disable API 2. Click "Track Contributions"	"Unable to fetch data" message appears		
+
 2. Non-Functional Test Cases
 Test Case ID	Type	Description	Steps	Expected Result	Actual Result	Status
 NTC-001	Performance	Ensure system can handle 1,000 users logging in simultaneously	Simulate 1,000 login requests	Response time ≤ 2s		
 NTC-002	Security	Prevent unauthorized access	Attempt login with incorrect credentials	"Access Denied" message appears		
+
 Reflection
 In this assignment, translating functional requirements into use cases and test cases proved to be a challenging yet rewarding process. The task required a deep understanding of both the stakeholders' needs and the system’s behavior, ensuring that every interaction was captured correctly in the use cases. Here are some key reflections:
 
