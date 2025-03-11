@@ -90,13 +90,11 @@ cargo run
 Reflection
 In this assignment, translating functional requirements into use cases and test cases proved to be a challenging yet rewarding process. The task required a deep understanding of both the stakeholders' needs and the system’s behavior, ensuring that every interaction was captured correctly in the use cases.
 
-Submission Checklist
-✅ Use Case Diagram: The use case diagram is created and included in the document.
-✅ Detailed Use Case Specifications: Specifications for each selected use case, including descriptions, preconditions, postconditions, flows, and alternative flows.
-✅ Test Cases Table: Functional and non-functional test cases, including test case ID, description, steps, expected results, and status.
-✅ Reflection on Challenges: A reflection discussing the challenges, lessons, and improvements in requirement translation.
-✅ Updated GitHub Repo: The repository is updated with all the necessary files and changes.
-✅ Submission Link on Blackboard: Ensure you’ve posted the link to your GitHub repository on Blackboard LMS for final submission.
-markdown
-Copy
-Edit
+## Submission Checklist
+
+- ✅ **Use Case Diagram**: The use case diagram is created and included in the document.
+- ✅ **Detailed Use Case Specifications**: Specifications for each selected use case, including descriptions, preconditions, postconditions, flows, and alternative flows.
+- ✅ **Test Cases Table**: Functional and non-functional test cases, including test case ID, description, steps, expected results, and status.
+- ✅ **Reflection on Challenges**: A reflection discussing the challenges, lessons, and improvements in requirement translation.
+- ✅ **Updated GitHub Repo**: The repository is updated with all the necessary files and changes.
+- ✅ **Submission Link on Blackboard**: Ensure you’ve posted the link to your GitHub repository on Blackboard LMS for final submission.
