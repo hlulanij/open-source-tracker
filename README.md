@@ -75,20 +75,26 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 Test Cases
 1. Functional Test Cases
-Test Case ID	Requirement ID	Description	Steps	Expected Result	Actual Result	Status
-TC-001	FR-001	Student logs into the system	1. Enter credentials 2. Click Login	Dashboard displayed		
-TC-002	FR-002	Student tracks contributions	1. Click "Track Contributions" 2. API fetches data	Contributions displayed		
-TC-003	FR-003	Admin reviews contributions	1. Admin selects "Review Contributions"	Contributions listed		
-TC-004	FR-004	Student generates a report	1. Click "Generate Report" 2. System processes data	Report is displayed		
-TC-005	FR-005	System handles empty contribution history	1. Track Contributions with an empty GitHub history	"No contributions found" message appears		
-TC-006	FR-006	Admin removes a user	1. Select user 2. Click "Remove"	User deleted from system		
-TC-007	FR-007	Student updates profile	1. Edit name and bio 2. Click "Save"	Profile updated successfully		
-TC-008	FR-008	GitHub API unavailability	1. Disable API 2. Click "Track Contributions"	"Unable to fetch data" message appears		
+### 1. Functional Test Cases
 
-2. Non-Functional Test Cases
-Test Case ID	Type	Description	Steps	Expected Result	Actual Result	Status
-NTC-001	Performance	Ensure system can handle 1,000 users logging in simultaneously	Simulate 1,000 login requests	Response time ≤ 2s		
-NTC-002	Security	Prevent unauthorized access	Attempt login with incorrect credentials	"Access Denied" message appears		
+| Test Case ID | Requirement ID | Description                         | Steps                                        | Expected Result                 | Actual Result | Status |
+|--------------|----------------|-------------------------------------|----------------------------------------------|---------------------------------|----------------|--------|
+| TC-001       | FR-001         | Student logs into the system        | 1. Enter credentials 2. Click Login          | Dashboard displayed              |                |        |
+| TC-002       | FR-002         | Student tracks contributions        | 1. Click "Track Contributions" 2. API fetches data | Contributions displayed          |                |        |
+| TC-003       | FR-003         | Admin reviews contributions         | 1. Admin selects "Review Contributions"      | Contributions listed             |                |        |
+| TC-004       | FR-004         | Student generates a report          | 1. Click "Generate Report" 2. System processes data | Report is displayed              |                |        |
+| TC-005       | FR-005         | System handles empty contribution history | 1. Track Contributions with an empty GitHub history | "No contributions found" message appears | | |
+| TC-006       | FR-006         | Admin removes a user                | 1. Select user 2. Click "Remove"            | User deleted from system         |                |        |
+| TC-007       | FR-007         | Student updates profile             | 1. Edit name and bio 2. Click "Save"        | Profile updated successfully     |                |        |
+| TC-008       | FR-008         | GitHub API unavailability           | 1. Disable API 2. Click "Track Contributions" | "Unable to fetch data" message appears | | |
+
+### 2. Non-Functional Test Cases
+
+| Test Case ID | Type       | Description                           | Steps                              | Expected Result               | Actual Result | Status |
+|--------------|------------|---------------------------------------|------------------------------------|-------------------------------|----------------|--------|
+| NTC-001      | Performance| Ensure system can handle 1,000 users logging in simultaneously | Simulate 1,000 login requests      | Response time ≤ 2s             |                |        |
+| NTC-002      | Security   | Prevent unauthorized access          | Attempt login with incorrect credentials | "Access Denied" message appears |                |        |
+
 
 Reflection
 In this assignment, translating functional requirements into use cases and test cases proved to be a challenging yet rewarding process. The task required a deep understanding of both the stakeholders' needs and the system’s behavior, ensuring that every interaction was captured correctly in the use cases. Here are some key reflections:
