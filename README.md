@@ -5,7 +5,7 @@
 The Open Source Contribution Tracker is a command-line application written in Rust that allows users to track their open-source contributions. It enables users to log contributions by adding details such as the GitHub username, repository name, and the number of commits made. The tracker also provides an option to list all recorded contributions.
 
 ## Use Case Diagram
-
+https://github.com/hlulanij/open-source-tracker/blob/main/mermaid-diagram-2025-03-11-204737.png?raw=true
 
 
 ## Project Objective
