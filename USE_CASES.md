@@ -31,19 +31,23 @@ graph TD;
     GenerateReport -->|Requires data| Database
     ReviewContributions -->|Accesses database| Database
 
-### 2. **Export Diagram as Image and Link in Markdown**
-If the Mermaid.js rendering still fails, another option is to **export the Mermaid diagram as an image** and use it in your markdown file.
+### 2. **Preview Locally or Use Another Tool**
+GitHub's native rendering might sometimes have issues with complex Mermaid diagrams, or the diagram might not render at all in some cases. You can use other methods to visualize Mermaid diagrams:
 
-**Steps:**
-1. **Create Diagram**: Use the **Mermaid Live Editor** (https://mermaid-js.github.io/mermaid-live-editor/) to generate your diagram.
-2. **Export as Image**: After generating your diagram, export it as **PNG** or **SVG**.
-3. **Upload Image to GitHub**:
-   - Upload the image to your GitHub repository (use the file uploader or the `git add` command).
-4. **Link Image in Markdown**:
-   - In your **usecase.md** file, replace the Mermaid code block with an image tag like this:
+#### Option 1: **Use a Markdown Previewer with Mermaid.js**
+- Install a local Markdown editor like **Typora** or **Mark Text**, which can render Mermaid.js diagrams properly.
+- Alternatively, use an online **Mermaid Live Editor** (https://mermaid-js.github.io/mermaid-live-editor/), paste the Mermaid diagram there, and confirm that it’s rendering as expected.
+- If everything looks good in the editor, you can export it as an image and add it to your GitHub repo.
+
+#### Option 2: **Export the Diagram as an Image**
+1. Use the **Mermaid Live Editor** or another local tool to generate your Mermaid diagram.
+2. Export the diagram as an image (PNG or SVG).
+3. Upload the image to your GitHub repository (use `git add` and commit the image).
+4. In your **Use_case.md**, link the image instead of using the Mermaid.js code:
 
 ```markdown
 ![Use Case Diagram](path/to/your/image.png)
+
 
 
 1.2 Explanation
