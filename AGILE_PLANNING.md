@@ -41,7 +41,22 @@
 
 ## 4. Reflection
 
-Challenges faced in prioritization included balancing security with usability, estimating effort accurately, and ensuring traceability with previous assignments. The selection of stories for Sprint 1 focused on delivering an MVP with essential functionality.
+### **Challenges in Prioritization**
+Prioritizing user stories was a complex task, especially in balancing security and usability. Security features such as encrypted user data and secure authentication were marked as *must-have* since they directly impact user trust. However, certain usability aspects, like filtering and exporting contributions, had to be deprioritized to *should-have* or *could-have* to ensure core functionality was implemented first. Choosing which stories belonged in Sprint 1 required analyzing dependencies, user needs, and technical feasibility.
+
+### **Challenges in Estimation**
+Effort estimation was another challenge. Since Agile relies on relative effort rather than absolute time, using story points helped, but accurately predicting the complexity of tasks was difficult. The *Add GitHub username* story had a higher effort estimate (5) than *Register an account* (3) due to API integration complexity. Similarly, *Encrypt user data* was estimated at 8 due to encryption implementation requirements. Without prior implementation experience in certain areas, there was uncertainty in estimation, which may require future adjustments as we gather more development insights.
+
+### **Aligning Agile with Stakeholder Needs**
+In large projects, multiple stakeholders provide varying perspectives, making prioritization easier. In this case, I was both the developer and the stakeholder, meaning I had to balance personal preferences and technical feasibility. At times, I had internal conflicts over whether usability improvements should be included in Sprint 1 or postponed. Ultimately, I decided that ensuring a functional MVP with authentication and contribution tracking was more important than secondary features like data exporting.
+
+### **Lessons Learned**
+One key lesson was the importance of dependencies in backlog prioritization. Some tasks, such as *View contributions*, depended on *Add GitHub username*, which in turn required authentication. Identifying these dependencies early helped structure the sprint efficiently. Another lesson was that estimation is an evolving process—some features might take longer than expected, requiring adjustments in future sprints. Finally, breaking down large stories into smaller, testable tasks helped make development more manageable.
+
+### **Future Considerations**
+For future sprints, I plan to refine estimation techniques by analyzing Sprint 1 outcomes and improving task breakdown. Additionally, usability improvements should be integrated iteratively instead of being postponed entirely. Agile’s iterative nature means that features like filtering and exporting can be revisited based on user feedback and project constraints. 
+
+Overall, this Agile planning exercise demonstrated the importance of prioritization, estimation, and iterative development in delivering a functional and efficient open-source tracker system.
 
 ## 5. GitHub Management
 - [ ] Create Issues for User Stories
@@ -49,4 +64,5 @@ Challenges faced in prioritization included balancing security with usability, e
 - [ ] Assign Milestones for Sprint Planning
 
 ---
+
 
