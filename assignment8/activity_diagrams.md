@@ -1,3 +1,4 @@
+```mermaid
 graph LR
     A[Start] --> B[Enter Email]
     B --> C[Enter Password]
@@ -10,4 +11,3 @@ graph LR
     H --> I[Registration Successful]
     I --> J[Redirect to Login]
     J --> K[End]
-
