@@ -1,7 +1,7 @@
 ## 1. State Transition Diagram for User Account
 
 ```mermaid
-stateDiagram-v2
+stateDiagram
     [*] --> Registered
     Registered --> Active : User logs in
     Active --> Suspended : Admin suspends account
@@ -9,7 +9,7 @@ stateDiagram-v2
     Active --> Deactivated : User deletes account
     Deactivated --> [*]
 
-stateDiagram-v2
+stateDiagram
     [*] --> Fetched : System retrieves contribution
     Fetched --> Processed : Contribution is analyzed
     Processed --> Stored : Contribution saved to database
@@ -18,7 +18,7 @@ stateDiagram-v2
     Archived --> [*]
     Deleted --> [*]
 
-stateDiagram-v2
+stateDiagram
     [*] --> Requested : User selects export option
     Requested --> Processing : System compiles data
     Processing --> Completed : Report is generated
