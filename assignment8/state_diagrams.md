@@ -12,3 +12,11 @@ stateDiagram-v2
 
 
 
+stateDiagram-v2
+    [*] --> Fetched : System retrieves contribution
+    Fetched --> Processed : Contribution is analyzed
+    Processed --> Stored : Contribution saved to database
+    Stored --> Archived : User exports data
+    Stored --> Deleted : User removes contribution
+    Archived --> [*]
+    Deleted --> [*]
