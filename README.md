@@ -19,7 +19,7 @@ The application has the following features:
 ## Use Case Diagram
 ![Use Case Diagram](https://github.com/hlulanij/open-source-tracker/blob/main/mermaid-diagram-2025-03-11-204737.png?raw=true)
 
-### 1. Functional Test Cases
+## Functional Test Cases
 
 | Test Case ID | Requirement ID | Description                         | Steps                                        | Expected Result                 | Actual Result | Status |
 |--------------|----------------|-------------------------------------|----------------------------------------------|---------------------------------|----------------|--------|
@@ -32,7 +32,7 @@ The application has the following features:
 | TC-007       | FR-007         | Student updates profile             | 1. Edit name and bio 2. Click "Save"        | Profile updated successfully     |                |        |
 | TC-008       | FR-008         | GitHub API unavailability           | 1. Disable API 2. Click "Track Contributions" | "Unable to fetch data" message appears | | |
 
-### 2. Non-Functional Test Cases
+## Non-Functional Test Cases
 
 | Test Case ID | Type       | Description                           | Steps                              | Expected Result               | Actual Result | Status |
 |--------------|------------|---------------------------------------|------------------------------------|-------------------------------|----------------|--------|
@@ -49,52 +49,57 @@ The application has the following features:
    ```bash
    git clone https://github.com/hlulanij/open-source-tracker.git
    cd open-source-tracker
-2. Make sure Rust is installed on your system. If you don't have it, you can install it by following the instructions on the official Rust website.
+   
+2. Make sure Rust is installed on your system. If you don't have it, you can install it by following the instructions on the official Rust website: https://www.rust-lang.org/learn/get-started.
 
-3.To build and run the project, use the following commands:
-bash
-Copy
-Edit
-cargo build
+3. To build and run the project, use the following commands:cargo build
 cargo run
 
 4. Follow the on-screen prompts to add contributions or view recorded contributions.
 
 How to Use
-To run the application, ensure you have Rust installed on your machine. If you don't have Rust installed, follow the instructions on the official website: https://www.rust-lang.org/.
 
-Steps to Run
 1. Clone the repository:
-
-bash
-Copy
-Edit
 git clone https://github.com/hlulanij/open-source-tracker.git
 cd open-source-tracker
 
-2. Build the project:
-bash
-Copy
-Edit
-cargo build
-
-3.Run the application:
-
-bash
-Copy
-Edit
-cargo run
-
-4. Follow the on-screen prompts to add contributions or list them.
+2. Build the project: cargo build
+3. Run the application:cargo run
+Follow the on-screen prompts to add contributions or list them.
 
 Reflection
 In this assignment, translating functional requirements into use cases and test cases proved to be a challenging yet rewarding process. The task required a deep understanding of both the stakeholders' needs and the system’s behavior, ensuring that every interaction was captured correctly in the use cases.
 
-## Submission Checklist
+✅ Checklist for Submission:
+✅ Use Case Diagram: The use case diagram is created and included in the document.
 
-- ✅ **Use Case Diagram**: The use case diagram is created and included in the document.
-- ✅ **Detailed Use Case Specifications**: Specifications for each selected use case, including descriptions, preconditions, postconditions, flows, and alternative flows.
-- ✅ **Test Cases Table**: Functional and non-functional test cases, including test case ID, description, steps, expected results, and status.
-- ✅ **Reflection on Challenges**: A reflection discussing the challenges, lessons, and improvements in requirement translation.
-- ✅ **Updated GitHub Repo**: The repository is updated with all the necessary files and changes.
-- ✅ **Submission Link on Blackboard**: Ensure you’ve posted the link to your GitHub repository on Blackboard LMS for final submission.
+✅ Detailed Use Case Specifications: Specifications for each selected use case, including descriptions, preconditions, postconditions, flows, and alternative flows.
+
+✅ Test Cases Table: Functional and non-functional test cases, including test case ID, description, steps, expected results, and status.
+
+✅ Reflection on Challenges: A reflection discussing the challenges, lessons, and improvements in requirement translation.
+
+✅ Updated GitHub Repo: The repository is updated with all the necessary files and changes.
+
+✅ Submission Link on Blackboard: Ensure you’ve posted the link to your GitHub repository on Blackboard LMS for final submission.
+
+Push Changes to GitHub:
+bash
+Copy code
+git add README.md
+git commit -m "Update README with installation instructions, features, and use case diagram"
+git push
+yaml
+Copy code
+
+---
+
+Let me know if this looks good to you, and feel free to copy and paste it into your `README.md`!
+
+
+
+
+
+
+
+   
