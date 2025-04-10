@@ -1,26 +1,53 @@
-### Reflection on Domain Model and Class Diagram Design
+## Domain Model for Open Source Contribution Tracker
 
-Designing the domain model and class diagram for the Open Source Contribution Tracker was a rewarding experience, although it posed several challenges. The process required a balance between abstraction, real-world business logic, and a structured approach to designing the system’s architecture. These challenges were primarily related to identifying the right entities, relationships, and ensuring the model aligned with the previously defined use cases and system requirements.
+### Key Domain Entities
 
-#### Challenges in Domain Modeling
-The first challenge I encountered was identifying and defining the key domain entities. In an open-source contribution tracker, the entities were not immediately obvious, as they had to reflect not only the actions of the users but also the system’s interactions with external services like the GitHub API. For example, while I initially considered entities like "Project" or "Repository," I realized that these were secondary to more important entities such as "User" and "Contribution." These were the core elements that defined the operations of the system, so they took precedence.
+1. **User**
+   - **Attributes:**
+     - `userId`: Unique identifier for the user.
+     - `name`: Name of the user.
+     - `email`: Email address associated with the user's GitHub account.
+   - **Methods:**
+     - `addContribution()`: Adds a new contribution entry for the user.
+     - `removeContribution()`: Removes a contribution from the user's record.
+     - `viewContributions()`: Displays all contributions made by the user.
+   - **Relationships:**
+     - A `User` can have multiple `Contributions`. This is a **one-to-many** relationship.
+   
+2. **Contribution**
+   - **Attributes:**
+     - `repositoryName`: Name of the repository where the user contributed.
+     - `commitCount`: Number of commits made by the user to the repository.
+     - `contributionDate`: Date when the contribution was made.
+   - **Methods:**
+     - `add()`: Adds a contribution entry for a user.
+     - `update()`: Updates the details of an existing contribution (e.g., commit count).
+     - `delete()`: Deletes the contribution from the system.
+   - **Relationships:**
+     - A `Contribution` is linked to one `User` (many contributions to one user) and one `GitHubAPI` for fetching contribution data. This is a **many-to-one** relationship with `User` and a **many-to-one** relationship with `GitHubAPI`.
 
-After identifying the entities, the next challenge was defining their attributes and methods. Each entity needed to encapsulate relevant data and behavior. For instance, the "User" entity had to have attributes like `userId` and `name`, while its methods (e.g., `logIn()`, `addContribution()`) were necessary for managing user actions. Similarly, the "Contribution" entity required attributes like `repositoryName` and `commitCount` to track the contributions, with methods to modify this data (e.g., `add()` and `update()`).
+3. **GitHubAPI**
+   - **Attributes:**
+     - `apiUrl`: The URL endpoint of the GitHub API used to fetch contribution data.
+     - `authenticationToken`: A token used for authentication when interacting with the API.
+   - **Methods:**
+     - `fetchContributionData()`: Fetches contribution data for a specific user and repository from the GitHub API.
+     - `validateUser()`: Verifies if a user exists on GitHub using their username.
+   - **Relationships:**
+     - A `GitHubAPI` instance is used to fetch data for multiple `Contributions`. It is associated with many contributions, making this a **one-to-many** relationship.
 
-#### Defining Relationships and Business Rules
-Defining the relationships between the entities was another challenge. It was crucial to decide whether an entity should have a direct relationship with another or if it was better to abstract it further. For example, "User" and "Contribution" were directly related—users logged contributions, so a one-to-many relationship was appropriate. The "User" entity could have multiple contributions, but each contribution was logged by exactly one user. Similarly, "Contribution" was indirectly related to the "GitHubAPI," as contributions were fetched from GitHub, but this interaction was optional and thus represented as a one-to-one relationship.
+### Relationships Between Entities
 
-Business rules also had to be incorporated to ensure the system’s behavior was consistent. For example, one business rule was that a user could only have contributions logged for repositories they had actually contributed to. This required ensuring the proper validation checks were in place for the `addContribution()` method in the "User" class.
+- **User ↔ Contribution**: A **one-to-many** relationship. A user can have multiple contributions, but each contribution is linked to a single user.
+- **Contribution ↔ GitHubAPI**: A **many-to-one** relationship. A contribution is linked to one GitHub API instance, which fetches the data for the contribution.
 
-#### Class Diagram Design Decisions
-The class diagram itself was a crucial component in visualizing the relationships between the domain entities. It provided an easy way to identify associations, compositions, and the multiplicity of relationships. One of the trade-offs I had to consider was whether to use inheritance or composition to model certain relationships. In the case of "User" and "Contribution," I used simple association rather than inheritance, as each entity had distinct attributes and behaviors that didn’t require a parent-child relationship. This decision simplified the design while still allowing for future expansion if needed.
+### Business Rules
+- **Contribution Limit**: A user can only log contributions for repositories they have contributed to.
+- **User Login**: A user must log in before they can add or view contributions.
+- **Unique Contribution**: Each contribution is uniquely identified by the combination of the `userId` and `repositoryName`.
+- **GitHub Account Validation**: Contributions can only be added for users with verified GitHub accounts (authenticated through the GitHub API).
+- **Data Integrity**: Contribution data must be updated whenever the number of commits is modified via the GitHub API.
 
-The "GitHubAPI" class was another area where abstraction played a role. Initially, I considered directly integrating the API into the "Contribution" class, but I opted to create a separate "GitHubAPI" class. This decision allowed for better separation of concerns, as the API could evolve independently without affecting the "Contribution" class. Additionally, I included methods in the "GitHubAPI" class, such as `fetchContributions()`, which encapsulated the logic of interacting with GitHub.
+### Conclusion
+The domain model accurately reflects the business logic and relationships necessary to track open-source contributions. The entities are clearly defined with specific attributes and methods, and the relationships are modeled according to how users, contributions, and the GitHub API interact. This model supports the core functionality of the system, ensuring that contributions are tracked, logged, and managed efficiently.
 
-#### Alignment with Prior Work
-The domain model and class diagram were aligned with the requirements, use cases, and behavioral models defined in previous assignments. The entities and relationships reflected the system’s functionality as described in the use cases and ensured the correct flow of data. For instance, the methods in the "User" and "Contribution" classes directly correlated with the actions outlined in the use cases (e.g., a user logging in, adding contributions, and viewing them). The class diagram helped to visualize these behaviors and ensured the system was modular and scalable.
-
-#### Lessons Learned
-One of the most important lessons I learned from designing the domain model and class diagram was the importance of abstraction in object-oriented design. By abstracting entities like "User" and "Contribution," I was able to focus on the core features of the system while maintaining flexibility. I also learned the importance of balancing simplicity with complexity in designing relationships. For example, I chose to keep relationships between entities simple, ensuring the model remained easy to understand and extend.
-
-Overall, the process of designing the domain model and class diagram enhanced my understanding of object-oriented principles, system architecture, and the role of business rules in guiding system behavior. This assignment has provided valuable insights into the iterative process of refining and improving a system’s design.
