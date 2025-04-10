@@ -1,23 +1,26 @@
-# Reflection on Domain Model and Class Diagram Design
+### Reflection on Domain Model and Class Diagram Design
 
-## Challenges Faced
-Designing the domain model and class diagram involved several challenges. One of the biggest difficulties was abstracting the system into key entities that captured all relevant aspects without becoming too complex. I had to carefully define the boundaries of each class and determine which attributes and methods were essential for fulfilling the system's core functionality.
+Designing the domain model and class diagram for the Open Source Contribution Tracker was a rewarding experience, although it posed several challenges. The process required a balance between abstraction, real-world business logic, and a structured approach to designing the system’s architecture. These challenges were primarily related to identifying the right entities, relationships, and ensuring the model aligned with the previously defined use cases and system requirements.
 
-The relationships between entities were also tricky, especially deciding on the multiplicities and associations. For example, the **User** can contribute to many repositories, but the **Contribution** must be linked to a **Repository** and a **User**, which required a precise understanding of their interactions.
+#### Challenges in Domain Modeling
+The first challenge I encountered was identifying and defining the key domain entities. In an open-source contribution tracker, the entities were not immediately obvious, as they had to reflect not only the actions of the users but also the system’s interactions with external services like the GitHub API. For example, while I initially considered entities like "Project" or "Repository," I realized that these were secondary to more important entities such as "User" and "Contribution." These were the core elements that defined the operations of the system, so they took precedence.
 
-## Alignment with Prior Work
-The class diagram and domain model closely align with the previous assignments:
-- The **User** entity reflects the user data model used in the use case diagrams from Assignment 5.
-- The **Contribution** class is a direct reflection of the contributions tracked in the system’s functional requirements.
-- Relationships like **User–Contribution** and **Contribution–Repository** align with how the system was intended to work, as outlined in the use cases and system specifications.
+After identifying the entities, the next challenge was defining their attributes and methods. Each entity needed to encapsulate relevant data and behavior. For instance, the "User" entity had to have attributes like `userId` and `name`, while its methods (e.g., `logIn()`, `addContribution()`) were necessary for managing user actions. Similarly, the "Contribution" entity required attributes like `repositoryName` and `commitCount` to track the contributions, with methods to modify this data (e.g., `add()` and `update()`).
 
-## Trade-Offs and Design Decisions
-A few trade-offs were made to simplify the design:
-- I decided to use **association** instead of **composition** between classes like **User** and **Contribution**, as the relationship doesn't imply that a **User** "owns" a **Contribution** permanently.
-- I avoided complex inheritance hierarchies and kept it simple by focusing on essential relationships.
+#### Defining Relationships and Business Rules
+Defining the relationships between the entities was another challenge. It was crucial to decide whether an entity should have a direct relationship with another or if it was better to abstract it further. For example, "User" and "Contribution" were directly related—users logged contributions, so a one-to-many relationship was appropriate. The "User" entity could have multiple contributions, but each contribution was logged by exactly one user. Similarly, "Contribution" was indirectly related to the "GitHubAPI," as contributions were fetched from GitHub, but this interaction was optional and thus represented as a one-to-one relationship.
 
-This approach keeps the system flexible and easy to maintain as new features can be added without significant changes to the existing model.
+Business rules also had to be incorporated to ensure the system’s behavior was consistent. For example, one business rule was that a user could only have contributions logged for repositories they had actually contributed to. This required ensuring the proper validation checks were in place for the `addContribution()` method in the "User" class.
 
-## Lessons Learned about Object-Oriented Design
-Through this process, I gained a deeper understanding of object-oriented design principles, particularly the importance of clearly defining entity
+#### Class Diagram Design Decisions
+The class diagram itself was a crucial component in visualizing the relationships between the domain entities. It provided an easy way to identify associations, compositions, and the multiplicity of relationships. One of the trade-offs I had to consider was whether to use inheritance or composition to model certain relationships. In the case of "User" and "Contribution," I used simple association rather than inheritance, as each entity had distinct attributes and behaviors that didn’t require a parent-child relationship. This decision simplified the design while still allowing for future expansion if needed.
 
+The "GitHubAPI" class was another area where abstraction played a role. Initially, I considered directly integrating the API into the "Contribution" class, but I opted to create a separate "GitHubAPI" class. This decision allowed for better separation of concerns, as the API could evolve independently without affecting the "Contribution" class. Additionally, I included methods in the "GitHubAPI" class, such as `fetchContributions()`, which encapsulated the logic of interacting with GitHub.
+
+#### Alignment with Prior Work
+The domain model and class diagram were aligned with the requirements, use cases, and behavioral models defined in previous assignments. The entities and relationships reflected the system’s functionality as described in the use cases and ensured the correct flow of data. For instance, the methods in the "User" and "Contribution" classes directly correlated with the actions outlined in the use cases (e.g., a user logging in, adding contributions, and viewing them). The class diagram helped to visualize these behaviors and ensured the system was modular and scalable.
+
+#### Lessons Learned
+One of the most important lessons I learned from designing the domain model and class diagram was the importance of abstraction in object-oriented design. By abstracting entities like "User" and "Contribution," I was able to focus on the core features of the system while maintaining flexibility. I also learned the importance of balancing simplicity with complexity in designing relationships. For example, I chose to keep relationships between entities simple, ensuring the model remained easy to understand and extend.
+
+Overall, the process of designing the domain model and class diagram enhanced my understanding of object-oriented principles, system architecture, and the role of business rules in guiding system behavior. This assignment has provided valuable insights into the iterative process of refining and improving a system’s design.
