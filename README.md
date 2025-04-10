@@ -71,6 +71,7 @@ Reflection
 In this assignment, translating functional requirements into use cases and test cases proved to be a challenging yet rewarding process. The task required a deep understanding of both the stakeholders' needs and the system’s behavior, ensuring that every interaction was captured correctly in the use cases.
 
 ✅ Checklist for Submission:
+
 ✅ Use Case Diagram: The use case diagram is created and included in the document.
 
 ✅ Detailed Use Case Specifications: Specifications for each selected use case, including descriptions, preconditions, postconditions, flows, and alternative flows.
