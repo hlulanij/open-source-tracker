@@ -1,25 +1,28 @@
 classDiagram
-class User {
-    -userId: String
-    -name: String
-    -email: String
-    +addContribution(repo: String, numCommits: Int): void
-    +listContributions(): List<Contribution>
-}
+    class User {
+        - userId: String
+        - name: String
+        + logIn()
+        + viewProfile()
+        + addContribution()
+        + listContributions()
+    }
+    
+    class Contribution {
+        - contributionId: String
+        - repositoryName: String
+        - commitCount: Integer
+        + add()
+        + update()
+        + delete()
+    }
 
-class Contribution {
-    -contributionId: String
-    -repoName: String
-    -numCommits: Int
-    +updateCommits(numCommits: Int): void
-}
+    class GitHubAPI {
+        - apiUrl: String
+        + fetchContributions()
+    }
 
-class Repository {
-    -repoId: String
-    -name: String
-    -url: String
-    +fetchContributors(): List<User>
-}
+    User "1" -- "0..*" Contribution : logs
+    User "1" -- "0..1" GitHubAPI : interacts with
+    Contribution "0..*" -- "1" GitHubAPI : fetched by
 
-User "1" -- "0..*" Contribution : makes
-Contribution "0..*" -- "1" Repository : belongsTo
