@@ -51,3 +51,13 @@ classDiagram
     Contribution "1" --> "0..*" Commit : includes
     Tracker "1" --> "0..*" Contribution : manages
 
+🔍 Explanation of Design Decisions:
+User–Contribution is a one-to-many relationship.
+
+Contribution–Repository is a one-to-one link (a contribution is tied to a single repository).
+
+Contribution–Commit is a one-to-many relationship.
+
+Tracker manages all contributions in the system.
+
+We use simple inheritance/association instead of over-complicating with composition at this point.
