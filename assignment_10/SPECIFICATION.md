@@ -1,36 +1,34 @@
-# Assignment 10 – System Specification Document
+# System Specification Document
 
 ## 📌 Project Title
-Open Source Tracker
+**Open Source Tracker System**
 
-## 🌐 Domain Description
-This project falls within the domain of software engineering, developer productivity, and data visualization. It focuses on helping developers track and analyze their contributions to open-source projects in a meaningful, structured way.
+## 🌍 Domain Description
+This system falls under the **Software Development** and **Developer Productivity** domains. It helps individual developers and contributors track their open-source contributions across various repositories.
 
-## 🚩 Problem Statement
-Open-source contributors often struggle to visualize and quantify their impact over time. While platforms like GitHub provide statistics, there is a lack of personalized tools to track specific contributions, understand commit patterns, and reflect on personal growth as a developer.
+## ❓ Problem Statement
+Many students and aspiring developers contribute to open-source projects but lack a centralized way to track, measure, or reflect on their work. This makes it difficult to showcase contributions when applying for internships, jobs, or funding opportunities.
 
-## 🎯 Purpose and Scope of the System
-The purpose of this system is to:
-- Track contributions (commits) made by a user to various repositories.
-- Summarize contribution history per project and overall.
-- Offer simple visual and textual summaries.
-- Help developers reflect on their activity and improve contribution habits.
+## 🎯 Objectives
+- Provide users with a profile to log contributions.
+- Automatically track contributions (commits, repositories).
+- Summarize statistics (e.g., most active days, repos contributed to).
+- Enable users to update their profile.
+- Store and retrieve contribution history efficiently.
 
-**Scope includes:**
-- Tracking repositories and commits.
-- Storing user contribution data.
-- Providing summary statistics and potential graphs.
-- Easy access to a user’s development history.
+## 🧍 Individual Scope
+This system is a **solo-developed** mini-tracker aimed at helping students visualize and manage their GitHub contributions without needing to access or connect to the GitHub API.
 
-**Scope excludes:**
-- Real-time syncing with GitHub API (handled manually or simulated).
-- Deep analytics or ML-based suggestions.
-- Team management and collaborative features.
+### Features Implemented:
+- Class diagram defining `User`, `Contribution`, `Repository`, `Commit`, and `Tracker` entities.
+- Internal structure to log and display contribution data.
+- Designed with expandability and offline usage in mind.
 
-## 👩‍💻 Individual Scope and Feasibility
-The scope is limited to a single-user use case for simplicity. The system will be implemented using Markdown documentation, class diagrams (Mermaid.js), and basic data organization. There are no external dependencies, making it suitable for academic purposes.
+## ✅ Justification (Feasibility)
+- Does not rely on external APIs or live GitHub integration, so it works offline.
+- Simple data models allow for easy simulation or manual entry of contributions.
+- Designed with learning goals in mind (data structures, class design, GitHub documentation, and diagramming).
 
-**Feasibility Justification:**
-- The system does not require complex infrastructure.
-- No backend or database integration is needed at this stage.
+---
+
 
