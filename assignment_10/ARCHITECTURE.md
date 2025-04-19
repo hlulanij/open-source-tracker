@@ -20,3 +20,14 @@ graph LR
 
     class User,OpenSourceTracker,GitHub external
 
+graph TD
+    Tracker((Tracker CLI))
+    Repository((Repository Storage))
+    UserDatabase((User Database))
+
+    Tracker -->|Logs contributions| Repository
+    Tracker -->|Saves User Data| UserDatabase
+    UserDatabase -->|Queries User Profiles| Tracker
+    Repository -->|Logs Contributions| Tracker
+
+    class Tracker,Repository,UserDatabase container
