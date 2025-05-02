@@ -1,10 +1,23 @@
-package assignment12;
+package assignment12.services;
 
+import assignment12.models.User;
+import assignment12.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class UserService {
 
-    public String createUser(String name) {
-        // Example logic
-        return "User " + name + " created successfully!";
-    }
-}
+    private final UserRepository userRepository;
 
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public User createUser(User user) {
+        return userRepository.save(user);
+    }
+
+    // Other methods for user-related business logic
+}
